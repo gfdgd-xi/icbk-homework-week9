@@ -8,6 +8,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -24,8 +25,8 @@ endif()
 ament_package()
 add_executable(turtle_topic_publisher src/turtle_topic_publisher.cpp)
 add_executable(turtle_topic_subscribe src/turtle_topic_subscribe.cpp)
-ament_target_dependencies(turtle_topic_publisher rclcpp)
-ament_target_dependencies(turtle_topic_subscribe rclcpp)
+ament_target_dependencies(turtle_topic_publisher rclcpp geometry_msgs)
+ament_target_dependencies(turtle_topic_subscribe rclcpp geometry_msgs)
 install(TARGETS
   turtle_topic_publisher
   DESTINATION lib/${PROJECT_NAME}
